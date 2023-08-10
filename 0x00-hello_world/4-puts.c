@@ -1,12 +1,11 @@
-#include <stdio.h>
+#include <studio.h>
+
 /**
- * main - this program prints exaclty "programming is like building a multilingual puzzle" 
- * Return: 0 when compiled, non-zero otherwise
+ * main - prints "Programming is like building a multilingual puzzle
+ * Return: 0 normal execution, non-zero otherwise
  */
 int main(void)
-{	
+{
 	puts("\"Programming is like building a multilingual puzzle");
-	return 0;
+	return (0);
 }
-
-
