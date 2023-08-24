@@ -10,10 +10,14 @@
 
 int main(void)
 {
-	srand(time(NULL));
 	int min = -255;
 	int max = 255;
-	int n = min + rand() % (max - min + 1);
+	int n;
+
+	srand(time(NULL));
+
+	n = min + rand() % (max - min + 1);
+
 
 	if (n > 0)
 	{

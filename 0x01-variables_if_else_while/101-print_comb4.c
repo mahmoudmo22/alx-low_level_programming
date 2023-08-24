@@ -32,7 +32,5 @@ int main(void)
 		}
 	}
 	putchar('\n');
-	printf("%d", count);
-
 	return (0);
 }
