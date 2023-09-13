@@ -17,7 +17,7 @@ int count_word(char *s)
 	word_count = 0;
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z' || *str >= 'A' && *str <= 'Z'))
+		if (!(((*str >= 'a') && (*str <= 'z')) || ((*str >= 'A') && (*str <= 'Z'))))
 		{
 			str++;
 			continue;
@@ -46,7 +46,7 @@ char *get_first_word(char *str, int *off_set)
 		return (NULL);
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z' || *str >= 'A' && *str <= 'Z'))
+		if (!(((*str >= 'a') && (*str <= 'z')) || ((*str >= 'A') && (*str <= 'Z'))))
 		{
 			++(*off_set);
 			str++;
@@ -62,7 +62,7 @@ char *get_first_word(char *str, int *off_set)
 		break;
 	}
 	word[i] = '\0';
-	if (*str == NULL)
+	if (*str == '\0')
 		--(*off_set);
 	return (word);
 }
@@ -77,24 +77,18 @@ char **strtow(char *str)
 {
 	int word_count, off_set, i, j;
 	char *word;
+	char **words;
 
 	word_count = count_word(str);
-	printf("words count is %d\n", word_count);
-	char **words = calloc(word_count + 1, sizeof(char **));
-
-	printf("words address = %p\n", words);
+	words = calloc(word_count + 1, sizeof(char **));
 	if (words == NULL)
 	{
-		printf("words returned NULL\n");
 		return (NULL);
 	}
 	for (i = 0; i < word_count; i++)
 	{
-		printf("%d iteration of getting word\n", i);
 		word = get_first_word(str, &off_set);
-		printf("offset = %d word: %s\n", off_set, word);
 		words[i] = strdup(word);
-		printf("addres of word %p\n", words[i]);
 		free(word);
 		if (words[i] == NULL)
 		{
@@ -102,6 +96,7 @@ char **strtow(char *str)
 			{
 				free(words[j]);
 			}
+			free(words);
 			return (NULL);
 		}
 		str += off_set;

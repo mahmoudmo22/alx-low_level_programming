@@ -12,22 +12,23 @@
   */
 char *argstostr(int ac, char **av)
 {
-	int new_str_len, i;
+	size_t new_str_len, i;
 	char *new_str;
 
-	if (ac == 0 || av == NULL)
+	new_str_len = 0;
+	if (ac <= 0 || av == NULL)
 		return (NULL);
-	for (i = 0; i < ac; i++)
-	{
+	for (i = 0; i < (size_t)ac; i++)
 		new_str_len += strlen(av[i]);
-	}
+
 	new_str = calloc(new_str_len + ac + 1, sizeof(char));
 	if (new_str == NULL)
 		return (NULL);
-	for (i = 0; i < ac; i++)
+	for (i = 0; i < (size_t)ac; i++)
 	{
 		strcat(new_str, av[i]);
-		strcat(new_str, "\n");
+		if (i != (size_t)ac - 1)
+			strcat(new_str, "\n");
 	}
 	return (new_str);
 }
