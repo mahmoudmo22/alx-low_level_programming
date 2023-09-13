@@ -37,7 +37,7 @@ int count_word(char *s)
 */
 char *get_first_word(char *str, int *off_set)
 {
-	char *word = calloc(30, sizeof(char));
+	char *word = calloc(100, sizeof(char));
 	int i;
 
 	*off_set = 0;
@@ -75,6 +75,8 @@ char *get_first_word(char *str, int *off_set)
  */
 char **strtow(char *str)
 {
+	if (*str == '\0')
+		return NULL;
 	int word_count, off_set, i, j;
 	char *word;
 	char **words;
