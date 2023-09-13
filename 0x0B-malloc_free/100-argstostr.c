@@ -27,8 +27,7 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < (size_t)ac; i++)
 	{
 		strcat(new_str, av[i]);
-		if (i != (size_t)ac - 1)
-			strcat(new_str, "\n");
+		strcat(new_str, "\n");
 	}
 	return (new_str);
 }
