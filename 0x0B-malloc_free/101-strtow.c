@@ -75,12 +75,12 @@ char *get_first_word(char *str, int *off_set)
  */
 char **strtow(char *str)
 {
-	if (*str == '\0')
-		return NULL;
 	int word_count, off_set, i, j;
 	char *word;
 	char **words;
 
+	if (*str == '\0')
+		return NULL;
 	word_count = count_word(str);
 	words = calloc(word_count + 1, sizeof(char **));
 	if (words == NULL)
