@@ -4,6 +4,7 @@
  * @head: pointer to pointer to first element
  * @str:
  *
+ * Return: pointer to the data
 */
 list_t *add_node(list_t **head, const char *str)
 {
