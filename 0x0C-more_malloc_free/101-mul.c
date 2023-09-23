@@ -1,20 +1,5 @@
 #include "main.h"
 /**
- * check_for_over_flow - check for integer over flow;
- * @p: pointer to the integer
-*/
-void check_for_over_flow(int *p)
-{
-	int num;
-
-	if (*p > 9)
-	{
-		num = *p;
-		*p = num % 10;
-		*(p + 1) += num / 10;
-	}
-}
-/**
  * reverseString - reverse a string
  * @str: string to be reversed
 */
@@ -61,6 +46,7 @@ char *mul_two_str_nums(char *num1, char *num2)
 	char *result;
 	int len1, len2;
 	int  i, j;
+	int num;
 
 	len1 = 0;
 	len2 = 0;
@@ -71,7 +57,7 @@ char *mul_two_str_nums(char *num1, char *num2)
 	result_in_ints = calloc(len2 + len1, sizeof(int));
 	result = malloc(len1 + len2 + 1);
 	if (result_in_ints == NULL || result == NULL)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	reverseString(num1);
 	reverseString(num2);
 	for (i = 0; i < len1; ++i)
@@ -82,10 +68,9 @@ char *mul_two_str_nums(char *num1, char *num2)
 
 			x = num1[i] - '0';
 			y = num2[j] - '0';
-			check_for_over_flow(&result_in_ints[i + j]);
-			result_in_ints[i + j] += (x * y) % 10;
-			result_in_ints[i + j + 1] += (x * y) / 10;
-			check_for_over_flow(&result_in_ints[i + j]);
+			num = result_in_ints[i + j] + (x * y);
+			result_in_ints[i + j] = num % 10;
+			result_in_ints[i + j + 1] += num / 10;
 		}
 	}
 	for (i = 0; i < len1 + len2; ++i)
@@ -108,7 +93,7 @@ char *mul_two_str_nums(char *num1, char *num2)
 */
 int main(int argc, char **argv)
 {
-	char *num1, *num2;
+	char *num1, *num2, *result;
 
 	num1 = argv[1];
 	num2 = argv[2];
@@ -117,6 +102,9 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(98);
 	}
-	printf("%s", mul_two_str_nums(argv[1], argv[2]));
+	result = mul_two_str_nums(num1, num2);
+	if (result == NULL)
+		return (1);
+	printf("%s", result);
 	return (0);
 }
