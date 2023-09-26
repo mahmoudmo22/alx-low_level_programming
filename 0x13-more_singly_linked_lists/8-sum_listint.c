@@ -3,7 +3,7 @@
  * sum_listint - calculate the sum of a list of integer
  * @head: the list
  *
- * Return :the sum of the list
+ * Return: the sum of the list
 */
 int sum_listint(listint_t *head)
 {
