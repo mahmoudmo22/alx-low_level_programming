@@ -14,7 +14,23 @@ typedef struct list
 	int n;
 	struct list *next;
 } listint_t;
+/**
+ * struct dynamiclist - dynamic list
+ * @data: pointer to data of the list
+ * @size: size of the data
+ * @capacity: capacity
+ * Description: a dynamically allocated list
+*/
+typedef struct dynamiclist
+{
+	size_t *data;
+	size_t size;
+	size_t capacity;
+} list_t;
 
+int search_index(list_t *nums, size_t target);
+void add_to_list(list_t *list, size_t data);
+list_t createlist(size_t initial_size);
 size_t free_listint_safe(listint_t **h);
 size_t print_listint_safe(const listint_t *head);
 listint_t *reverse_listint(listint_t **head);
